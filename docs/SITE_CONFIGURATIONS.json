@@ -1,0 +1,202 @@
+{
+  "sites": {
+    "ceoofone": {
+      "name": "CEO of One",
+      "domain": "ceoofone.ai",
+      "tagline": "AI-powered chief of staff for solo CEOs",
+      "targetAudience": "Solo CEOs and founders of very small businesses",
+      "accentColor": "#FF6B35",
+      "painPoints": [
+        "Drowning in the 80% that doesn't matter",
+        "Wearing every hat in the company",
+        "No time for strategic work",
+        "Overwhelmed by minutiae"
+      ],
+      "solution": "AI-powered chief of staff that identifies critical 20% priorities and handles the rest",
+      "heroHeadline": "Wearing Every Hat? Focus on the One That Actually Grows Your Business",
+      "primaryCTA": "Get Your Free CEO Strategy Session",
+      "keyFeatures": [
+        "Morning briefing of critical priorities",
+        "Automated reports and analytics", 
+        "Decision-support insights",
+        "Focus on high-value tasks only"
+      ]
+    },
+    "directorofone": {
+      "name": "Director of One",
+      "domain": "directorofone.ai",
+      "tagline": "One-person department optimization",
+      "targetAudience": "Directors and managers who are essentially a one-person department",
+      "accentColor": "#00A878",
+      "painPoints": [
+        "Running a department alone is overwhelming",
+        "Scheduling, budgeting, executing all at once",
+        "Endless administrative tasks",
+        "No time for big-picture thinking"
+      ],
+      "solution": "AI tools to automate routine operations and highlight priorities",
+      "heroHeadline": "Running a Department of One? Work Smarter, Not Harder",
+      "primaryCTA": "Get Your Free Workflow Audit",
+      "keyFeatures": [
+        "Automated dashboards and reminders",
+        "Process automation tools",
+        "Priority management system",
+        "Save 10+ hours per week"
+      ]
+    },
+    "vcofone": {
+      "name": "vCFO of One",
+      "domain": "vcofone.ai",
+      "tagline": "Virtual CFO for solo businesses",
+      "targetAudience": "Small business owners without a full-time CFO",
+      "accentColor": "#00A878",
+      "painPoints": [
+        "Making money or just managing money?",
+        "Hours in Excel with no clarity",
+        "Unpredictable cashflow",
+        "Unclear KPIs and metrics"
+      ],
+      "solution": "AI-driven virtual CFO providing financial insight and oversight on demand",
+      "heroHeadline": "Get Crystal-Clear Financial Visibility Without a Full-Time CFO",
+      "primaryCTA": "Get Your Free Financial Clarity Session",
+      "keyFeatures": [
+        "Real-time financial insights",
+        "Cash flow forecasting",
+        "Custom KPI tracking",
+        "ROI analysis on all initiatives"
+      ]
+    },
+    "vpofone": {
+      "name": "VP of One",
+      "domain": "vpofone.ai", 
+      "tagline": "Executive leverage for solo leaders",
+      "targetAudience": "VPs and executives without adequate support staff",
+      "accentColor": "#9B59B6",
+      "painPoints": [
+        "Title responsibility without team support",
+        "Overloaded with data and reports",
+        "Competing priorities",
+        "Risk of burnout"
+      ],
+      "solution": "Suite of AI executive assistants for strategy, analytics, and operations",
+      "heroHeadline": "Punch Above Your Weight – Lead Big with a Small Team",
+      "primaryCTA": "Get Your Executive Strategy Session",
+      "keyFeatures": [
+        "360° executive support",
+        "Market analysis and insights",
+        "Project management automation",
+        "Strategic opportunity alerts"
+      ]
+    },
+    "companyofone": {
+      "name": "Company of One",
+      "domain": "companyofone.ai",
+      "tagline": "The solopreneur success hub",
+      "targetAudience": "Solopreneurs and very small business owners",
+      "accentColor": "#E74C3C",
+      "painPoints": [
+        "Working long hours for little growth",
+        "Unsure which investments pay off",
+        "Drowning in administrative tasks",
+        "Feeling isolated or lacking feedback"
+      ],
+      "solution": "Comprehensive methodology and tools for thriving as a business of one",
+      "heroHeadline": "Build More. Grow Fast. Stay One.",
+      "primaryCTA": "Get Your Free Business Consultation",
+      "keyFeatures": [
+        "One-on-one consulting",
+        "AI assistant suite access",
+        "Customized growth roadmap",
+        "Community and support"
+      ]
+    },
+    "lawyerofone": {
+      "name": "Lawyer of One",
+      "domain": "lawyerofone.ai",
+      "tagline": "Solo legal support for small businesses",
+      "targetAudience": "Small business owners without in-house legal counsel",
+      "accentColor": "#34495E",
+      "painPoints": [
+        "Legal headaches keeping you up at night",
+        "Every contract falls on your desk",
+        "Fear of missing fine print",
+        "Costly legal bills for simple questions"
+      ],
+      "solution": "AI-powered legal assistant with human attorney oversight",
+      "heroHeadline": "Your One-Person Legal Department",
+      "primaryCTA": "Get Your Free Legal Health Check",
+      "keyFeatures": [
+        "Contract review and analysis",
+        "Plain-English legal explanations",
+        "Compliance reminders",
+        "Attorney oversight for accuracy"
+      ]
+    },
+    "businessofone": {
+      "name": "Business of One",
+      "domain": "businessofone.ai",
+      "tagline": "Solo business consulting and optimization",
+      "targetAudience": "One-person businesses seeking growth",
+      "accentColor": "#16A085",
+      "painPoints": [
+        "Running solo is rewarding but overwhelming",
+        "Important growth tasks get sidelined",
+        "Jack of all trades, master of none",
+        "No clear path to scale"
+      ],
+      "solution": "One-stop consulting and tools to run your business like a world-class company",
+      "heroHeadline": "Transform Your Solo Business – Without Hiring",
+      "primaryCTA": "Get Your Free Business Strategy Session",
+      "keyFeatures": [
+        "Business audit and optimization",
+        "Growth strategy development",
+        "Automation implementation",
+        "Ongoing advisory support"
+      ]
+    },
+    "unicornofone": {
+      "name": "Unicorn of One",
+      "domain": "unicornofone.ai",
+      "tagline": "Build a billion-dollar business with a team of one",
+      "targetAudience": "Ambitious founders aiming for massive scale without massive teams",
+      "accentColor": "#8E44AD",
+      "painPoints": [
+        "World-changing idea but no world-sized team",
+        "Traditional wisdom says you can't do it alone",
+        "Burning out before breaking through",
+        "Losing focus across too many priorities"
+      ],
+      "solution": "Radical focus methodology and AI leverage for exponential growth",
+      "heroHeadline": "One Person. One Vision. $1 Billion Impact.",
+      "primaryCTA": "Request Your Unicorn Strategy Session",
+      "keyFeatures": [
+        "Exponential productivity systems",
+        "AI-powered scaling strategies",
+        "Focus on 10x opportunities only",
+        "Elite founder community access"
+      ]
+    },
+    "hrofone": {
+      "name": "HR of One",
+      "domain": "hrofone.ai",
+      "tagline": "Your AI HR department for a company of one",
+      "targetAudience": "Small business owners and solo HR managers",
+      "accentColor": "#3498DB",
+      "painPoints": [
+        "Keeping up with hiring paperwork and benefits",
+        "Worried about missing compliance requirements",
+        "Onboarding gets rushed or messy",
+        "Endless employee questions and requests"
+      ],
+      "solution": "Full HR toolkit with automation for routine tasks and compliance",
+      "heroHeadline": "Your Personal HR Department",
+      "primaryCTA": "Get Your Free HR Relief Session",
+      "keyFeatures": [
+        "Automated payroll and benefits",
+        "Compliance tracking and alerts",
+        "Onboarding workflow automation",
+        "Employee self-service portal"
+      ]
+    }
+  }
+}

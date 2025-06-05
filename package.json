@@ -1,0 +1,28 @@
+{
+  "name": "ceo-of-one",
+  "version": "1.0.0",
+  "description": "CEO of One - AI-powered chief of staff for solo CEOs",
+  "scripts": {
+    "orchestrate": "node scripts/agent-orchestrator.js",
+    "background": "echo 'Background agent started with prompt:' && echo $CURSOR_BACKGROUND_AGENT_PROMPT",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
+  },
+  "keywords": [
+    "ceo",
+    "solo-entrepreneur",
+    "ai-assistant",
+    "productivity",
+    "utlyze"
+  ],
+  "author": "Utlyze",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}
