@@ -1,0 +1,20 @@
+# Cursor Rules for CEO of One
+
+## Project Context
+This is the CEO of One website - an AI-powered chief of staff for solo CEOs. Part of the Utlyze "Of One" suite targeting solo professionals.
+
+## Key Guidelines
+- Follow Utlyze brand guidelines: clean minimalist design
+- Primary color: #4169E1 (Utlyze blue)
+- Accent color: #FF6B35 (Orange for CTAs)
+- Target audience: Solo CEOs drowning in the 80% that doesn't matter
+- Core message: Focus on critical 20%, AI handles the rest
+
+## Tech Stack
+- Frontend: Next.js 14 with TypeScript and Tailwind CSS
+- Backend: Express.js with TypeScript
+- Database: Supabase
+- Deployment: Vercel
+
+## Agent Tasks
+When working as a background agent, check the current task and focus only on that specific deliverable.
