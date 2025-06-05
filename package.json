@@ -4,7 +4,8 @@
   "description": "CEO of One - AI-powered chief of staff for solo CEOs",
   "scripts": {
     "orchestrate": "node scripts/agent-orchestrator.js",
-    "background": "echo 'To run a Cursor background agent:\\n1. Open Cursor IDE\\n2. Press Cmd+Shift+P (Mac) or Ctrl+Shift+P (Windows)\\n3. Type: Cursor: Start Background Agent\\n4. Paste the prompt from the orchestrator\\n\\nAlternatively, in Cursor terminal: cursor-agent --prompt \"YOUR_PROMPT\"'",
+    "background": "node scripts/run-agent.js",
+    "agent": "node scripts/run-agent.js",
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "test": "jest",
