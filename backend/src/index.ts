@@ -8,6 +8,8 @@ import dotenv from 'dotenv';
 import { errorHandler } from '@/middleware/errorHandler';
 import { requestLogger } from '@/middleware/requestLogger';
 import { healthRouter } from '@/api/health';
+import { leadsRouter } from '@/api/routes/leads';
+import { docsRouter } from '@/api/docs';
 
 // Load environment variables
 dotenv.config();
@@ -61,6 +63,8 @@ app.use(requestLogger);
 
 // API Routes
 app.use('/api/health', healthRouter);
+app.use('/api/leads', leadsRouter);
+app.use('/api/docs', docsRouter);
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -84,13 +88,5 @@ app.use('*', (req, res) => {
 // Error handling middleware (must be last)
 app.use(errorHandler);
 
-// Start server
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`🚀 CEO of One API server running on port ${PORT}`);
-    console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
-  });
-}
-
+// Export the Express app for use in server.ts
 export default app;
