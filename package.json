@@ -6,6 +6,13 @@
     "orchestrate": "node scripts/agent-orchestrator.js",
     "background": "node scripts/run-agent.js",
     "agent": "node scripts/run-agent.js",
+    "monitor": "node agent-workflows/monitor-agents.js",
+    "launch-wave": "node agent-workflows/launch-wave.js",
+    "agent:design": "AGENT_ROLE=design-system node agent-workflows/agent-runner.js",
+    "agent:content": "AGENT_ROLE=content-strategy node agent-workflows/agent-runner.js",
+    "agent:api": "AGENT_ROLE=api-infrastructure node agent-workflows/agent-runner.js",
+    "agent:nextjs": "AGENT_ROLE=nextjs-setup node agent-workflows/agent-runner.js",
+    "complete-task": "node scripts/agent-orchestrator.js complete",
     "dev": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
     "dev:full": "concurrently \"npm run dev:backend\" \"npm run dev\"",
@@ -26,11 +33,14 @@
   ],
   "author": "Utlyze",
   "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "concurrently": "^8.2.2",
     "eslint": "^8.0.0",
     "jest": "^29.0.0",
-    "typescript": "^5.0.0",
-    "concurrently": "^8.2.2"
+    "typescript": "^5.0.0"
   }
 }
