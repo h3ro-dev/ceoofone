@@ -18,73 +18,96 @@ const SITES_BASE_DIR = path.join(__dirname, '../../..');
 
 function createSiteRepository(siteKey, siteConfig) {
   console.log(`\n🚀 Creating repository for ${siteConfig.name}...`);
-  
+
   const siteDirName = siteKey.charAt(0).toUpperCase() + siteKey.slice(1);
   const siteDir = path.join(SITES_BASE_DIR, siteDirName);
-  
+
   // Skip if already exists
   if (fs.existsSync(siteDir)) {
     console.log(`  ⏭️  ${siteDirName} already exists, skipping...`);
     return;
   }
-  
+
   try {
     // Create directory structure
     console.log('  📁 Creating directory structure...');
     execSync(`mkdir -p "${siteDir}"`, { cwd: SITES_BASE_DIR });
-    execSync(`cd "${siteDir}" && mkdir -p scripts docs infrastructure/{terraform,docker} frontend/{src/{components,pages,hooks,config,styles},public/assets} backend/{src/{api,services,middleware,utils},config} shared/{types,constants} agent-tasks content/{copy,seo} .github/workflows`, { shell: true });
-    
+    execSync(
+      `cd "${siteDir}" && mkdir -p scripts docs infrastructure/{terraform,docker} frontend/{src/{components,pages,hooks,config,styles},public/assets} backend/{src/{api,services,middleware,utils},config} shared/{types,constants} agent-tasks content/{copy,seo} .github/workflows`,
+      { shell: true }
+    );
+
     // Initialize git
     console.log('  🔧 Initializing git repository...');
     execSync(`cd "${siteDir}" && git init`, { shell: true });
-    
+
     // Create customized orchestrator
     console.log('  🤖 Creating agent orchestrator...');
     const orchestratorContent = generateOrchestrator(siteConfig);
-    fs.writeFileSync(path.join(siteDir, 'scripts/agent-orchestrator.js'), orchestratorContent);
-    execSync(`chmod +x "${path.join(siteDir, 'scripts/agent-orchestrator.js')}"`, { shell: true });
-    
+    fs.writeFileSync(
+      path.join(siteDir, 'scripts/agent-orchestrator.js'),
+      orchestratorContent
+    );
+    execSync(
+      `chmod +x "${path.join(siteDir, 'scripts/agent-orchestrator.js')}"`,
+      { shell: true }
+    );
+
     // Create package.json
     console.log('  📦 Creating package.json...');
     const packageJson = generatePackageJson(siteConfig);
-    fs.writeFileSync(path.join(siteDir, 'package.json'), JSON.stringify(packageJson, null, 2));
-    
+    fs.writeFileSync(
+      path.join(siteDir, 'package.json'),
+      JSON.stringify(packageJson, null, 2)
+    );
+
     // Create README
     console.log('  📄 Creating README...');
     const readmeContent = generateReadme(siteConfig);
     fs.writeFileSync(path.join(siteDir, 'README.md'), readmeContent);
-    
+
     // Create project briefing
     console.log('  📋 Creating project briefing...');
     const briefingContent = generateBriefing(siteConfig);
-    fs.writeFileSync(path.join(siteDir, 'docs/PROJECT_BRIEFING.md'), briefingContent);
-    
+    fs.writeFileSync(
+      path.join(siteDir, 'docs/PROJECT_BRIEFING.md'),
+      briefingContent
+    );
+
     // Copy common files
     console.log('  📂 Copying common files...');
     fs.copyFileSync(
       path.join(__dirname, '../.gitignore'),
       path.join(siteDir, '.gitignore')
     );
-    
+
     console.log(`  ✅ ${siteConfig.name} repository created successfully!`);
-    
   } catch (error) {
     console.error(`  ❌ Error creating ${siteConfig.name}:`, error.message);
   }
 }
 
 function generateOrchestrator(siteConfig) {
-  const template = fs.readFileSync(path.join(__dirname, 'template-orchestrator.js'), 'utf8');
-  
+  const template = fs.readFileSync(
+    path.join(__dirname, 'template-orchestrator.js'),
+    'utf8'
+  );
+
   return template
     .replace(/\[SITE_NAME\]/g, siteConfig.name)
     .replace(/\[DOMAIN\]/g, siteConfig.domain)
     .replace(/\[TARGET_AUDIENCE\]/g, siteConfig.targetAudience)
     .replace(/\[ACCENT\]/g, siteConfig.accentColor)
-    .replace(/\[CUSTOMIZE_PAIN_POINTS\]/g, `Pain points: ${siteConfig.painPoints.join(', ')}`)
+    .replace(
+      /\[CUSTOMIZE_PAIN_POINTS\]/g,
+      `Pain points: ${siteConfig.painPoints.join(', ')}`
+    )
     .replace(/\[CUSTOMIZE_SOLUTION\]/g, `Solution: ${siteConfig.solution}`)
     .replace(/\[CUSTOMIZE_KEY_BENEFITS\]/g, siteConfig.keyFeatures.join(', '))
-    .replace(/\[CUSTOMIZE_SECTIONS\]/g, 'Hero, pain points, solution, features, testimonials, CTAs');
+    .replace(
+      /\[CUSTOMIZE_SECTIONS\]/g,
+      'Hero, pain points, solution, features, testimonials, CTAs'
+    );
 }
 
 function generatePackageJson(siteConfig) {
@@ -94,15 +117,16 @@ function generatePackageJson(siteConfig) {
     description: siteConfig.tagline,
     scripts: {
       orchestrate: 'node scripts/agent-orchestrator.js',
-      background: 'echo "Background agent started with prompt:" && echo $CURSOR_BACKGROUND_AGENT_PROMPT',
+      background:
+        'echo "Background agent started with prompt:" && echo $CURSOR_BACKGROUND_AGENT_PROMPT',
       dev: 'cd frontend && npm run dev',
       build: 'cd frontend && npm run build',
       test: 'jest',
-      lint: 'eslint . --ext .ts,.tsx,.js,.jsx'
+      lint: 'eslint . --ext .ts,.tsx,.js,.jsx',
     },
     keywords: siteConfig.name.toLowerCase().split(' '),
     author: 'Utlyze',
-    license: 'MIT'
+    license: 'MIT',
   };
 }
 
@@ -211,20 +235,20 @@ Remember: We're selling transformation, not just tools.
 function main() {
   console.log('🏗️  Generating "Of One" Site Repositories\n');
   console.log('This will create repositories for all configured sites.\n');
-  
+
   const siteKeys = Object.keys(sites);
   console.log(`Found ${siteKeys.length} sites to generate:`);
   siteKeys.forEach(key => console.log(`  - ${sites[key].name}`));
-  
+
   // Skip ceoofone as it already exists
   const sitesToGenerate = siteKeys.filter(key => key !== 'ceoofone');
-  
+
   console.log(`\nGenerating ${sitesToGenerate.length} new repositories...`);
-  
+
   sitesToGenerate.forEach(siteKey => {
     createSiteRepository(siteKey, sites[siteKey]);
   });
-  
+
   console.log('\n✅ All repositories generated!');
   console.log('\nNext steps for each site:');
   console.log('1. cd into the site directory');

@@ -23,9 +23,9 @@ Focus areas:
 5. Set up responsive breakpoints
 
 Do NOT work on any other tasks. Update the orchestrator state when you begin and complete your work.`,
-    files: ['tailwind.config.js', 'styles/globals.css', 'styles/tokens.css']
+    files: ['tailwind.config.js', 'styles/globals.css', 'styles/tokens.css'],
   },
-  
+
   'content-strategy': {
     taskId: 'content-strategy',
     prompt: `You are the Content Strategy Agent for CEO of One. Your ONLY job is to develop content and messaging.
@@ -41,9 +41,13 @@ Target audience: Solo CEOs drowning in the 80% that doesn't matter.
 Key message: Focus on critical 20%, AI handles the rest.
 
 Do NOT work on any other tasks. Create content in a structured format.`,
-    files: ['content/messages.json', 'content/copy-guide.md', 'content/sections/']
+    files: [
+      'content/messages.json',
+      'content/copy-guide.md',
+      'content/sections/',
+    ],
   },
-  
+
   'api-infrastructure': {
     taskId: 'api-infrastructure',
     prompt: `You are the API Infrastructure Agent for CEO of One. Your ONLY job is to build the backend API.
@@ -56,9 +60,14 @@ Focus areas:
 5. Create API documentation structure
 
 Do NOT implement specific features, just the infrastructure.`,
-    files: ['server/index.ts', 'server/routes/', 'server/middleware/', 'server/config/']
+    files: [
+      'server/index.ts',
+      'server/routes/',
+      'server/middleware/',
+      'server/config/',
+    ],
   },
-  
+
   'nextjs-setup': {
     taskId: 'nextjs-setup',
     prompt: `You are the Next.js Setup Agent for CEO of One. Your ONLY job is initial Next.js configuration.
@@ -71,9 +80,14 @@ Focus areas:
 5. Set up environment variables structure
 
 Do NOT build actual pages or components, just the setup.`,
-    files: ['next.config.js', 'app/layout.tsx', 'app/loading.tsx', '.env.example']
+    files: [
+      'next.config.js',
+      'app/layout.tsx',
+      'app/loading.tsx',
+      '.env.example',
+    ],
   },
-  
+
   'component-library': {
     taskId: 'component-library',
     prompt: `You are the Component Library Agent. Build reusable components using the completed design system.
@@ -92,9 +106,9 @@ Use the design tokens from the design-system task. Each component should have:
 - Responsive behavior
 - Accessibility features`,
     dependencies: ['design-system'],
-    files: ['components/ui/', 'components/index.ts']
+    files: ['components/ui/', 'components/index.ts'],
   },
-  
+
   'landing-page': {
     taskId: 'landing-page',
     prompt: `You are the Landing Page Agent. Build the complete landing page using available components and content.
@@ -110,8 +124,8 @@ Page sections:
 
 Use components from component-library and content from content-strategy.`,
     dependencies: ['design-system', 'content-strategy', 'component-library'],
-    files: ['app/page.tsx', 'app/sections/']
-  }
+    files: ['app/page.tsx', 'app/sections/'],
+  },
 };
 
 // Get agent role from environment
@@ -129,20 +143,23 @@ function checkDependencies() {
   if (!config.dependencies || config.dependencies.length === 0) {
     return true;
   }
-  
+
   try {
-    const stateFile = path.join(process.cwd(), '.agent-orchestrator-state.json');
-    const state = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
-    
-    const missingDeps = config.dependencies.filter(dep => 
-      !state.completedTasks.includes(dep)
+    const stateFile = path.join(
+      process.cwd(),
+      '.agent-orchestrator-state.json'
     );
-    
+    const state = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
+
+    const missingDeps = config.dependencies.filter(
+      dep => !state.completedTasks.includes(dep)
+    );
+
     if (missingDeps.length > 0) {
       console.log(`⏳ Waiting for dependencies: ${missingDeps.join(', ')}`);
       return false;
     }
-    
+
     return true;
   } catch (error) {
     console.error('Error checking dependencies:', error.message);
@@ -153,9 +170,12 @@ function checkDependencies() {
 // Update task status
 function updateTaskStatus(status) {
   try {
-    const stateFile = path.join(process.cwd(), '.agent-orchestrator-state.json');
+    const stateFile = path.join(
+      process.cwd(),
+      '.agent-orchestrator-state.json'
+    );
     const state = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
-    
+
     if (status === 'in-progress') {
       if (!state.inProgressTasks.includes(config.taskId)) {
         state.inProgressTasks.push(config.taskId);
@@ -165,9 +185,11 @@ function updateTaskStatus(status) {
       if (!state.completedTasks.includes(config.taskId)) {
         state.completedTasks.push(config.taskId);
       }
-      state.inProgressTasks = state.inProgressTasks.filter(t => t !== config.taskId);
+      state.inProgressTasks = state.inProgressTasks.filter(
+        t => t !== config.taskId
+      );
     }
-    
+
     fs.writeFileSync(stateFile, JSON.stringify(state, null, 2));
     console.log(`✅ Updated task status: ${config.taskId} -> ${status}`);
   } catch (error) {
@@ -179,40 +201,51 @@ function updateTaskStatus(status) {
 async function runAgent() {
   console.log(`🤖 Starting ${agentRole} Agent`);
   console.log(`📋 Task: ${config.taskId}`);
-  
+
   // Check dependencies
   if (!checkDependencies()) {
     console.log('❌ Dependencies not met. Please run dependent tasks first.');
     process.exit(1);
   }
-  
+
   // Update status to in-progress
   updateTaskStatus('in-progress');
-  
+
   // Display agent prompt
   console.log('\n📝 Agent Instructions:');
   console.log('------------------------');
   console.log(config.prompt);
   console.log('------------------------\n');
-  
+
   // Show files to work on
   console.log('📁 Files to create/modify:');
   config.files.forEach(file => console.log(`   - ${file}`));
-  
+
   console.log('\n🚀 Agent is now ready to work!');
-  console.log('💡 Run this in Cursor as a background agent with the above prompt.');
-  
+  console.log(
+    '💡 Run this in Cursor as a background agent with the above prompt.'
+  );
+
   // Create a marker file for the agent
   const markerFile = path.join(process.cwd(), `.agent-${agentRole}.active`);
-  fs.writeFileSync(markerFile, JSON.stringify({
-    role: agentRole,
-    taskId: config.taskId,
-    startTime: new Date().toISOString(),
-    prompt: config.prompt
-  }, null, 2));
-  
+  fs.writeFileSync(
+    markerFile,
+    JSON.stringify(
+      {
+        role: agentRole,
+        taskId: config.taskId,
+        startTime: new Date().toISOString(),
+        prompt: config.prompt,
+      },
+      null,
+      2
+    )
+  );
+
   console.log(`\n✅ Agent marker created: ${markerFile}`);
-  console.log('🔄 When task is complete, run: npm run complete-task ' + config.taskId);
+  console.log(
+    '🔄 When task is complete, run: npm run complete-task ' + config.taskId
+  );
 }
 
 // Run the agent

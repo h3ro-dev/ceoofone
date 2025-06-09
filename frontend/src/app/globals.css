@@ -2,8 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @layer base {
   :root {
+    /* CEO of One Design System Custom Properties */
+    
+    /* Colors */
+    --color-primary-blue: #4169E1;
+    --color-primary-orange: #FF6B35;
+    --color-neutral-white: #FFFFFF;
+    --color-neutral-soft-gray: #F8F9FA;
+    --color-neutral-light-gray: #E9ECEF;
+    --color-neutral-medium-gray: #6C757D;
+    --color-neutral-dark-gray: #343A40;
+    --color-neutral-charcoal: #212529;
+    --color-success: #28A745;
+    --color-warning: #FFC107;
+    --color-error: #DC3545;
+    --color-info: #17A2B8;
+    
+    /* Typography */
+    --font-family-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-family-monospace: "SF Mono", "Monaco", "Inconsolata", monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    --spacing-4xl: 5rem;
+    --spacing-5xl: 6rem;
+    
+    /* Animation */
+    --animation-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --animation-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --animation-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --animation-instant: 100ms;
+    --animation-quick: 200ms;
+    --animation-standard: 300ms;
+    
+    /* Legacy support for existing styles */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --primary: 229 84% 58%; /* Utlyze blue #4169E1 */
@@ -86,5 +129,49 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Custom animations for booking modal */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
   }
 }

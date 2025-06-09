@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, master]
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '0 */6 * * *' # Every 6 hours
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.GH_BOT_TOKEN }}
           base: 'main,master'
           required_approval_count: 0
-          
+
       - name: Update branches with Copilot suggestions
         uses: actions/github-script@v7
         with:
@@ -28,7 +28,7 @@ jobs:
               repo: context.repo.repo,
               state: 'open'
             });
-            
+
             for (const pr of pulls) {
               if (pr.mergeable_state === 'behind') {
                 console.log(`Updating PR #${pr.number}: ${pr.title}`);

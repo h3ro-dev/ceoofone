@@ -13,17 +13,25 @@ const path = require('path');
 const prompt = process.env.CURSOR_BACKGROUND_AGENT_PROMPT;
 
 if (!prompt) {
-  console.error('❌ Error: CURSOR_BACKGROUND_AGENT_PROMPT environment variable is required');
+  console.error(
+    '❌ Error: CURSOR_BACKGROUND_AGENT_PROMPT environment variable is required'
+  );
   console.error('\nUsage:');
-  console.error('CURSOR_BACKGROUND_AGENT_PROMPT="Your prompt here" npm run agent');
+  console.error(
+    'CURSOR_BACKGROUND_AGENT_PROMPT="Your prompt here" npm run agent'
+  );
   process.exit(1);
 }
 
 // Check if we're in a git repository
 try {
-  require('child_process').execSync('git rev-parse --git-dir', { stdio: 'ignore' });
+  require('child_process').execSync('git rev-parse --git-dir', {
+    stdio: 'ignore',
+  });
 } catch (error) {
-  console.error('❌ Error: Not in a git repository. Please ensure this is a git repository.');
+  console.error(
+    '❌ Error: Not in a git repository. Please ensure this is a git repository.'
+  );
   process.exit(1);
 }
 
@@ -59,4 +67,4 @@ console.log('3. Run "npm run orchestrate" to see next available tasks');
 
 // Note: In a real Cursor background agent, this would launch the agent process
 // For now, we're setting up the task file and providing instructions
-console.log('\n🚀 Agent task is ready to execute!'); 
+console.log('\n🚀 Agent task is ready to execute!');

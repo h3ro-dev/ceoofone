@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import designSystem from './src/styles/design-system';
 
 const config: Config = {
   content: [
@@ -9,42 +10,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Utlyze brand colors
+        // Primary Colors
         primary: {
-          DEFAULT: '#4169E1', // Utlyze blue
-          50: '#F0F4FF',
-          100: '#E5EFFF',
-          200: '#D1E1FF',
-          300: '#B3CCFF',
-          400: '#85A3FF',
-          500: '#4169E1',
-          600: '#2952CC',
-          700: '#1E3F99',
-          800: '#1A3366',
-          900: '#152633',
+          DEFAULT: designSystem.colors.primary.blue,
+          blue: designSystem.colors.primary.blue,
+          orange: designSystem.colors.primary.orange,
         },
+        // Neutral Colors
+        neutral: designSystem.colors.neutral,
+        // Semantic Colors
+        semantic: designSystem.colors.semantic,
+        // Legacy support
         accent: {
-          DEFAULT: '#FF6B35', // Orange for CTAs
-          50: '#FFF5F2',
-          100: '#FFEDE5',
-          200: '#FFD6CC',
-          300: '#FFB399',
-          400: '#FF8F66',
-          500: '#FF6B35',
-          600: '#E6551F',
-          700: '#B8421A',
-          800: '#8A3214',
-          900: '#5C220E',
+          DEFAULT: designSystem.colors.primary.orange,
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: designSystem.typography.fontFamily.primary.split(',').map(f => f.trim().replace(/"/g, '')),
+        mono: designSystem.typography.fontFamily.monospace.split(',').map(f => f.trim().replace(/"/g, '')),
       },
+      fontSize: designSystem.typography.fontSize,
+      fontWeight: designSystem.typography.fontWeight,
+      lineHeight: designSystem.typography.lineHeight,
+      spacing: designSystem.spacing,
+      borderRadius: designSystem.borderRadius,
+      boxShadow: designSystem.shadows,
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
+        'fade-in': `fadeIn ${designSystem.animation.duration.deliberate} ${designSystem.animation.easing.easeOut}`,
+        'slide-up': `slideUp ${designSystem.animation.duration.deliberate} ${designSystem.animation.easing.easeOut}`,
+        'button-hover': `buttonHover ${designSystem.animation.duration.quick} ${designSystem.animation.easing.easeOut}`,
       },
       keyframes: {
         fadeIn: {
@@ -55,6 +51,17 @@ const config: Config = {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        buttonHover: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-2px)' },
+        },
+      },
+      screens: {
+        sm: designSystem.breakpoints.sm,
+        md: designSystem.breakpoints.md,
+        lg: designSystem.breakpoints.lg,
+        xl: designSystem.breakpoints.xl,
+        '2xl': designSystem.breakpoints['2xl'],
       },
     },
   },

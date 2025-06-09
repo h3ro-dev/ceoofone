@@ -3,7 +3,9 @@
 ## 🧩 Button Components
 
 ### Primary Button (CTA)
+
 **Use for**: Main calls-to-action, form submissions, primary user actions
+
 ```jsx
 // React/JSX
 <button className="btn-primary">
@@ -23,6 +25,7 @@
 ```
 
 **CSS Classes**:
+
 ```css
 .btn-primary
 .btn-primary:hover
@@ -31,7 +34,9 @@
 ```
 
 ### Secondary Button
+
 **Use for**: Secondary actions, "Learn More" links, supporting CTAs
+
 ```jsx
 // Standard secondary button
 <button className="btn-secondary">
@@ -51,7 +56,9 @@
 ```
 
 ### Ghost Button
+
 **Use for**: Tertiary actions, navigation links, subtle interactions
+
 ```jsx
 // Standard ghost button
 <button className="btn-ghost">
@@ -75,7 +82,9 @@
 ## 🃏 Card Components
 
 ### Primary Card
+
 **Use for**: Content sections, feature highlights, testimonials
+
 ```jsx
 // Basic card
 <div className="card">
@@ -92,8 +101,8 @@
 
 // Card with image
 <div className="card">
-  <img 
-    src="/feature-image.jpg" 
+  <img
+    src="/feature-image.jpg"
     alt="Feature"
     className="w-full h-48 object-cover rounded-lg mb-4"
   />
@@ -108,8 +117,8 @@
 // Testimonial card
 <div className="card text-center">
   <div className="mb-4">
-    <img 
-      src="/avatar.jpg" 
+    <img
+      src="/avatar.jpg"
       alt="Jennifer"
       className="w-16 h-16 rounded-full mx-auto mb-3"
     />
@@ -123,7 +132,9 @@
 ```
 
 ### Feature Card
+
 **Use for**: Premium features, highlighted content, special offers
+
 ```jsx
 // Feature highlight
 <div className="card-feature text-center">
@@ -180,13 +191,14 @@
 ## 📝 Form Components
 
 ### Input Fields
+
 ```jsx
 // Standard input
 <div className="space-y-2">
   <label className="block text-body font-medium text-neutral-700">
     Email Address
   </label>
-  <input 
+  <input
     type="email"
     className="input w-full"
     placeholder="Enter your email"
@@ -198,7 +210,7 @@
   <label className="block text-body font-medium text-neutral-700">
     Company Name
   </label>
-  <input 
+  <input
     type="text"
     className="input error w-full"
     placeholder="Enter company name"
@@ -209,7 +221,7 @@
 </div>
 
 // Large input for hero sections
-<input 
+<input
   type="email"
   className="input w-full text-lg p-4"
   placeholder="Enter your email to get started"
@@ -217,6 +229,7 @@
 ```
 
 ### Select Dropdowns
+
 ```jsx
 // Standard select
 <div className="space-y-2">
@@ -254,6 +267,7 @@
 ```
 
 ### Form Layouts
+
 ```jsx
 // Contact form
 <form className="space-y-6">
@@ -271,24 +285,24 @@
       <input type="text" className="input w-full" />
     </div>
   </div>
-  
+
   <div>
     <label className="block text-body font-medium text-neutral-700 mb-2">
       Email
     </label>
     <input type="email" className="input w-full" />
   </div>
-  
+
   <div>
     <label className="block text-body font-medium text-neutral-700 mb-2">
       Message
     </label>
-    <textarea 
+    <textarea
       className="input w-full h-32 resize-none"
       placeholder="Tell us about your biggest challenge..."
     ></textarea>
   </div>
-  
+
   <button type="submit" className="btn-primary w-full">
     Send Message
   </button>
@@ -305,7 +319,7 @@
     </p>
   </div>
   <div className="flex gap-3">
-    <input 
+    <input
       type="email"
       className="input flex-1"
       placeholder="Enter your email"
@@ -322,6 +336,7 @@
 ## 📊 Layout Components
 
 ### Hero Sections
+
 ```jsx
 // Main hero
 <section className="section-spacing bg-gradient-to-br from-primary-50 to-white">
@@ -332,7 +347,7 @@
       <span className="text-primary-500">Grows Your Business</span>
     </h1>
     <p className="text-body-lg text-neutral-600 max-w-3xl mx-auto mb-8">
-      CEO of One gives solo leaders AI-powered leverage to escape the 80% 
+      CEO of One gives solo leaders AI-powered leverage to escape the 80%
       that doesn't matter and double down on the 20% that does.
     </p>
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -352,11 +367,11 @@
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <h1 className="text-h1 text-neutral-800 mb-6">
-          Turn Overwhelm Into 
+          Turn Overwhelm Into
           <span className="text-primary-500"> Focus and Results</span>
         </h1>
         <p className="text-body-lg text-neutral-600 mb-8">
-          What if you could focus only on decisions that grow your business? 
+          What if you could focus only on decisions that grow your business?
           CEO of One acts as your intelligent chief of staff.
         </p>
         <button className="btn-primary">
@@ -364,8 +379,8 @@
         </button>
       </div>
       <div>
-        <img 
-          src="/hero-image.jpg" 
+        <img
+          src="/hero-image.jpg"
           alt="Focused CEO"
           className="w-full rounded-xl shadow-lg"
         />
@@ -376,51 +391,46 @@
 ```
 
 ### Feature Grids
+
 ```jsx
 // 3-column feature grid
 <section className="section-spacing bg-neutral-50">
   <div className="container-site">
     <div className="text-center mb-16">
-      <h2 className="text-h2 text-neutral-800 mb-4">
-        Your AI Chief of Staff
-      </h2>
+      <h2 className="text-h2 text-neutral-800 mb-4">Your AI Chief of Staff</h2>
       <p className="text-body-lg text-neutral-600 max-w-2xl mx-auto">
-        Not another task manager - an intelligent filter for what actually matters
+        Not another task manager - an intelligent filter for what actually
+        matters
       </p>
     </div>
-    
+
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div className="card text-center">
         <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-6">
           <MorningIcon className="w-6 h-6 text-primary-500" />
         </div>
-        <h3 className="text-h4 text-neutral-800 mb-3">
-          Morning Briefing
-        </h3>
+        <h3 className="text-h4 text-neutral-800 mb-3">Morning Briefing</h3>
         <p className="text-body text-neutral-600">
-          Start each day knowing your top 3 priorities based on your goals and deadlines
+          Start each day knowing your top 3 priorities based on your goals and
+          deadlines
         </p>
       </div>
-      
+
       <div className="card text-center">
         <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-6">
           <DecisionIcon className="w-6 h-6 text-accent-500" />
         </div>
-        <h3 className="text-h4 text-neutral-800 mb-3">
-          Decision Support
-        </h3>
+        <h3 className="text-h4 text-neutral-800 mb-3">Decision Support</h3>
         <p className="text-body text-neutral-600">
           Get data-driven insights for critical choices with impact analysis
         </p>
       </div>
-      
+
       <div className="card text-center">
         <div className="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center mx-auto mb-6">
           <AutomationIcon className="w-6 h-6 text-success-500" />
         </div>
-        <h3 className="text-h4 text-neutral-800 mb-3">
-          Task Triage
-        </h3>
+        <h3 className="text-h4 text-neutral-800 mb-3">Task Triage</h3>
         <p className="text-body text-neutral-600">
           AI handles routine tasks so you don't have to think about them
         </p>
@@ -431,17 +441,18 @@
 ```
 
 ### Testimonial Sections
+
 ```jsx
 // Single testimonial highlight
 <section className="section-spacing bg-primary-500 text-white">
   <div className="container-site text-center">
     <blockquote className="text-h2 font-light mb-8">
-      "I eliminated 80% of my daily tasks and doubled revenue in 90 days. 
+      "I eliminated 80% of my daily tasks and doubled revenue in 90 days.
       CEO of One gave me back my strategic thinking time."
     </blockquote>
     <div className="flex items-center justify-center gap-4">
-      <img 
-        src="/jennifer-avatar.jpg" 
+      <img
+        src="/jennifer-avatar.jpg"
         alt="Jennifer Martinez"
         className="w-16 h-16 rounded-full"
       />
@@ -459,7 +470,7 @@
     <h2 className="text-h2 text-neutral-800 text-center mb-16">
       Loved by Solo CEOs
     </h2>
-    
+
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div className="card">
         <div className="flex items-center gap-1 mb-4">
@@ -468,12 +479,12 @@
           ))}
         </div>
         <blockquote className="text-body text-neutral-700 mb-6">
-          "Finally took a vacation without the business falling apart. 
+          "Finally took a vacation without the business falling apart.
           The AI briefings kept everything running smoothly."
         </blockquote>
         <div className="flex items-center gap-3">
-          <img 
-            src="/sarah-avatar.jpg" 
+          <img
+            src="/sarah-avatar.jpg"
             alt="Sarah Chen"
             className="w-10 h-10 rounded-full"
           />
@@ -483,7 +494,7 @@
           </div>
         </div>
       </div>
-      
+
       {/* Additional testimonial cards... */}
     </div>
   </div>
@@ -495,33 +506,21 @@
 ## 🎨 Typography Examples
 
 ### Heading Hierarchy
+
 ```jsx
 <div className="space-y-8">
-  <h1 className="text-display text-neutral-800">
-    Display Heading (64px)
-  </h1>
-  <h1 className="text-h1 text-neutral-800">
-    Heading 1 (48px)
-  </h1>
-  <h2 className="text-h2 text-neutral-800">
-    Heading 2 (36px)
-  </h2>
-  <h3 className="text-h3 text-neutral-800">
-    Heading 3 (30px)
-  </h3>
-  <h4 className="text-h4 text-neutral-800">
-    Heading 4 (24px)
-  </h4>
-  <h5 className="text-h5 text-neutral-800">
-    Heading 5 (20px)
-  </h5>
-  <h6 className="text-h6 text-neutral-800">
-    Heading 6 (18px)
-  </h6>
+  <h1 className="text-display text-neutral-800">Display Heading (64px)</h1>
+  <h1 className="text-h1 text-neutral-800">Heading 1 (48px)</h1>
+  <h2 className="text-h2 text-neutral-800">Heading 2 (36px)</h2>
+  <h3 className="text-h3 text-neutral-800">Heading 3 (30px)</h3>
+  <h4 className="text-h4 text-neutral-800">Heading 4 (24px)</h4>
+  <h5 className="text-h5 text-neutral-800">Heading 5 (20px)</h5>
+  <h6 className="text-h6 text-neutral-800">Heading 6 (18px)</h6>
 </div>
 ```
 
 ### Body Text Variants
+
 ```jsx
 <div className="space-y-4">
   <p className="text-body-lg text-neutral-600">
@@ -544,6 +543,7 @@
 ## 📱 Responsive Patterns
 
 ### Mobile Navigation
+
 ```jsx
 // Mobile-first navigation
 <nav className="bg-white border-b border-neutral-100">
@@ -551,30 +551,35 @@
     <div className="flex items-center justify-between h-16">
       <div className="flex items-center gap-2">
         <Logo className="h-8 w-auto" />
-        <span className="text-h5 font-bold text-neutral-800">
-          CEO of One
-        </span>
+        <span className="text-h5 font-bold text-neutral-800">CEO of One</span>
       </div>
-      
+
       {/* Mobile menu button */}
       <button className="md:hidden p-2">
         <MenuIcon className="w-6 h-6 text-neutral-600" />
       </button>
-      
+
       {/* Desktop navigation */}
       <div className="hidden md:flex items-center gap-8">
-        <a href="#features" className="text-body text-neutral-600 hover:text-primary-500">
+        <a
+          href="#features"
+          className="text-body text-neutral-600 hover:text-primary-500"
+        >
           Features
         </a>
-        <a href="#pricing" className="text-body text-neutral-600 hover:text-primary-500">
+        <a
+          href="#pricing"
+          className="text-body text-neutral-600 hover:text-primary-500"
+        >
           Pricing
         </a>
-        <a href="#about" className="text-body text-neutral-600 hover:text-primary-500">
+        <a
+          href="#about"
+          className="text-body text-neutral-600 hover:text-primary-500"
+        >
           About
         </a>
-        <button className="btn-primary">
-          Get Started
-        </button>
+        <button className="btn-primary">Get Started</button>
       </div>
     </div>
   </div>
@@ -582,6 +587,7 @@
 ```
 
 ### Responsive Grid Patterns
+
 ```jsx
 // Auto-fit grid for features
 <div className="grid grid-cols-auto-fit-300 gap-6">
@@ -614,23 +620,24 @@
 ## ♿ Accessibility Examples
 
 ### Keyboard Navigation
+
 ```jsx
 // Focus management
 <div className="space-y-4">
   <button className="btn-primary focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
     Accessible Button
   </button>
-  
-  <input 
+
+  <input
     className="input focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
     aria-label="Email address"
   />
-  
-  <div 
+
+  <div
     role="button"
     tabIndex={0}
     className="card cursor-pointer focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-    onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+    onKeyDown={e => e.key === 'Enter' && handleClick()}
   >
     Interactive card content
   </div>
@@ -638,6 +645,7 @@
 ```
 
 ### Screen Reader Support
+
 ```jsx
 // Proper labeling and descriptions
 <form>
@@ -645,7 +653,7 @@
     <label htmlFor="email" className="text-body font-medium text-neutral-700">
       Email Address
     </label>
-    <input 
+    <input
       id="email"
       type="email"
       className="input w-full"
@@ -656,9 +664,9 @@
       We'll use this to send you your daily CEO briefing
     </p>
   </div>
-  
-  <button 
-    type="submit" 
+
+  <button
+    type="submit"
     className="btn-primary"
     aria-describedby="submit-help"
   >
@@ -670,7 +678,7 @@
 </form>
 
 // Loading states
-<button 
+<button
   className="btn-primary"
   disabled={isLoading}
   aria-label={isLoading ? 'Submitting form...' : 'Submit form'}
@@ -688,4 +696,4 @@
 
 ---
 
-*This component guide provides practical examples for implementing the CEO of One design system consistently across all user interfaces.*
+_This component guide provides practical examples for implementing the CEO of One design system consistently across all user interfaces._

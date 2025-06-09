@@ -40,7 +40,7 @@ module.exports = {
         },
         // Neutral Grays
         neutral: {
-          50: '#f8f9fa',  // Soft Gray
+          50: '#f8f9fa', // Soft Gray
           100: '#e9ecef', // Light Gray
           200: '#dee2e6',
           300: '#ced4da',
@@ -106,28 +106,35 @@ module.exports = {
           950: '#082f49',
         },
       },
-      
+
       // Typography
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: [
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'sans-serif',
+        ],
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'monospace'],
       },
-      
+
       // Font Sizes (Type Scale)
       fontSize: {
-        'caption': ['0.75rem', { lineHeight: '2' }],        // 12px
-        'body-sm': ['0.875rem', { lineHeight: '1.625' }],   // 14px
-        'body': ['1rem', { lineHeight: '1.5' }],            // 16px
-        'body-lg': ['1.125rem', { lineHeight: '1.5' }],     // 18px
-        'h6': ['1.125rem', { lineHeight: '1.375' }],        // 18px
-        'h5': ['1.25rem', { lineHeight: '1.375' }],         // 20px
-        'h4': ['1.5rem', { lineHeight: '1.375' }],          // 24px
-        'h3': ['1.875rem', { lineHeight: '1.25' }],         // 30px
-        'h2': ['2.25rem', { lineHeight: '1.25' }],          // 36px
-        'h1': ['3rem', { lineHeight: '1.25' }],             // 48px
-        'display': ['4rem', { lineHeight: '1.25' }],        // 64px
+        caption: ['0.75rem', { lineHeight: '2' }], // 12px
+        'body-sm': ['0.875rem', { lineHeight: '1.625' }], // 14px
+        body: ['1rem', { lineHeight: '1.5' }], // 16px
+        'body-lg': ['1.125rem', { lineHeight: '1.5' }], // 18px
+        h6: ['1.125rem', { lineHeight: '1.375' }], // 18px
+        h5: ['1.25rem', { lineHeight: '1.375' }], // 20px
+        h4: ['1.5rem', { lineHeight: '1.375' }], // 24px
+        h3: ['1.875rem', { lineHeight: '1.25' }], // 30px
+        h2: ['2.25rem', { lineHeight: '1.25' }], // 36px
+        h1: ['3rem', { lineHeight: '1.25' }], // 48px
+        display: ['4rem', { lineHeight: '1.25' }], // 64px
       },
-      
+
       // Font Weights
       fontWeight: {
         light: '300',
@@ -137,62 +144,62 @@ module.exports = {
         bold: '700',
         extrabold: '800',
       },
-      
+
       // Spacing (8px base unit)
       spacing: {
-        'xs': '0.5rem',   // 8px
-        'sm': '0.75rem',  // 12px
-        'md': '1rem',     // 16px
-        'lg': '1.5rem',   // 24px
-        'xl': '2rem',     // 32px
-        '2xl': '3rem',    // 48px
-        '3xl': '4rem',    // 64px
-        '4xl': '5rem',    // 80px
-        '5xl': '6rem',    // 96px
-        '6xl': '8rem',    // 128px
-        '7xl': '10rem',   // 160px
+        xs: '0.5rem', // 8px
+        sm: '0.75rem', // 12px
+        md: '1rem', // 16px
+        lg: '1.5rem', // 24px
+        xl: '2rem', // 32px
+        '2xl': '3rem', // 48px
+        '3xl': '4rem', // 64px
+        '4xl': '5rem', // 80px
+        '5xl': '6rem', // 96px
+        '6xl': '8rem', // 128px
+        '7xl': '10rem', // 160px
       },
-      
+
       // Border Radius
       borderRadius: {
-        'sm': '4px',
-        'DEFAULT': '8px',
-        'md': '8px',
-        'lg': '12px',
-        'xl': '16px',
+        sm: '4px',
+        DEFAULT: '8px',
+        md: '8px',
+        lg: '12px',
+        xl: '16px',
         '2xl': '24px',
       },
-      
+
       // Box Shadows
       boxShadow: {
         'button-primary': '0 4px 12px rgba(255, 107, 53, 0.25)',
         'button-secondary': '0 2px 8px rgba(65, 105, 225, 0.15)',
-        'card': '0 4px 16px rgba(0, 0, 0, 0.08)',
+        card: '0 4px 16px rgba(0, 0, 0, 0.08)',
         'card-hover': '0 8px 24px rgba(0, 0, 0, 0.12)',
         'feature-card': '0 8px 24px rgba(65, 105, 225, 0.12)',
-        'focus': '0 0 0 3px rgba(65, 105, 225, 0.1)',
+        focus: '0 0 0 3px rgba(65, 105, 225, 0.1)',
       },
-      
+
       // Animation & Transitions
       transitionTimingFunction: {
         'ease-out': 'cubic-bezier(0.215, 0.61, 0.355, 1)',
         'ease-in-out': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
-        'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
       },
-      
+
       transitionDuration: {
-        'instant': '100ms',
-        'quick': '200ms',
-        'standard': '300ms',
-        'deliberate': '500ms',
-        'slow': '700ms',
+        instant: '100ms',
+        quick: '200ms',
+        standard: '300ms',
+        deliberate: '500ms',
+        slow: '700ms',
       },
-      
+
       // Layout
       maxWidth: {
-        'container': '1200px',
+        container: '1200px',
       },
-      
+
       // Grid
       gridTemplateColumns: {
         'auto-fit-250': 'repeat(auto-fit, minmax(250px, 1fr))',
@@ -203,7 +210,7 @@ module.exports = {
   },
   plugins: [
     // Custom component classes
-    function({ addComponents, theme }) {
+    function ({ addComponents, theme }) {
       addComponents({
         // Button Components
         '.btn-primary': {
@@ -227,7 +234,7 @@ module.exports = {
             transform: 'translateY(0)',
           },
         },
-        
+
         '.btn-secondary': {
           backgroundColor: theme('colors.primary.500'),
           color: theme('colors.white'),
@@ -244,7 +251,7 @@ module.exports = {
             boxShadow: `${theme('boxShadow.button-secondary')}, ${theme('boxShadow.focus')}`,
           },
         },
-        
+
         '.btn-ghost': {
           backgroundColor: 'transparent',
           color: theme('colors.primary.500'),
@@ -262,7 +269,7 @@ module.exports = {
             boxShadow: theme('boxShadow.focus'),
           },
         },
-        
+
         // Card Components
         '.card': {
           backgroundColor: theme('colors.white'),
@@ -276,7 +283,7 @@ module.exports = {
             boxShadow: theme('boxShadow.card-hover'),
           },
         },
-        
+
         '.card-feature': {
           backgroundColor: theme('colors.white'),
           border: `2px solid ${theme('colors.primary.500')}`,
@@ -284,7 +291,7 @@ module.exports = {
           padding: theme('spacing.8'),
           boxShadow: theme('boxShadow.feature-card'),
         },
-        
+
         // Form Components
         '.input': {
           backgroundColor: theme('colors.white'),
@@ -302,50 +309,50 @@ module.exports = {
             borderColor: theme('colors.error.500'),
           },
         },
-        
+
         // Typography Utilities
         '.text-display': {
           fontSize: theme('fontSize.display')[0],
           lineHeight: theme('fontSize.display')[1].lineHeight,
           fontWeight: theme('fontWeight.extrabold'),
         },
-        
+
         '.text-h1': {
           fontSize: theme('fontSize.h1')[0],
           lineHeight: theme('fontSize.h1')[1].lineHeight,
           fontWeight: theme('fontWeight.bold'),
         },
-        
+
         '.text-h2': {
           fontSize: theme('fontSize.h2')[0],
           lineHeight: theme('fontSize.h2')[1].lineHeight,
           fontWeight: theme('fontWeight.bold'),
         },
-        
+
         '.text-h3': {
           fontSize: theme('fontSize.h3')[0],
           lineHeight: theme('fontSize.h3')[1].lineHeight,
           fontWeight: theme('fontWeight.semibold'),
         },
-        
+
         '.text-h4': {
           fontSize: theme('fontSize.h4')[0],
           lineHeight: theme('fontSize.h4')[1].lineHeight,
           fontWeight: theme('fontWeight.semibold'),
         },
-        
+
         '.text-body-lg': {
           fontSize: theme('fontSize.body-lg')[0],
           lineHeight: theme('fontSize.body-lg')[1].lineHeight,
           fontWeight: theme('fontWeight.normal'),
         },
-        
+
         '.text-body': {
           fontSize: theme('fontSize.body')[0],
           lineHeight: theme('fontSize.body')[1].lineHeight,
           fontWeight: theme('fontWeight.normal'),
         },
-        
+
         // Layout Utilities
         '.container-site': {
           maxWidth: theme('maxWidth.container'),
@@ -358,7 +365,7 @@ module.exports = {
             paddingRight: theme('spacing.4'),
           },
         },
-        
+
         '.section-spacing': {
           paddingTop: theme('spacing.5xl'),
           paddingBottom: theme('spacing.5xl'),
@@ -367,7 +374,7 @@ module.exports = {
             paddingBottom: theme('spacing.3xl'),
           },
         },
-      })
+      });
     },
   ],
-}
+};
