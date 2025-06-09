@@ -5,9 +5,11 @@ import { createPortal } from 'react-dom';
 import { cn } from '@/utils/cn';
 import BookingForm, { BookingFormData } from './BookingForm';
 import { useBooking } from '@/contexts/BookingContext';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const BookingModal: React.FC = () => {
   const { isModalOpen, closeModal } = useBooking();
+  const { trackBookingModal, trackConversion } = useAnalytics();
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -18,23 +20,33 @@ const BookingModal: React.FC = () => {
     return () => setMounted(false);
   }, []);
 
+  const handleClose = () => {
+    trackBookingModal('close');
+    closeModal();
+  };
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isModalOpen) {
-        closeModal();
+        handleClose();
       }
     };
 
     if (isModalOpen) {
       document.addEventListener('keydown', handleEscape);
+      // Track modal open
+      trackBookingModal('open');
       return () => document.removeEventListener('keydown', handleEscape);
     }
     return undefined;
-  }, [isModalOpen, closeModal]);
+  }, [isModalOpen, trackBookingModal]);
 
   const handleSubmit = async (data: BookingFormData) => {
     setIsSubmitting(true);
     setError(null);
+    
+    // Track form submission start
+    trackBookingModal('start', { formData: data });
 
     try {
       const response = await fetch('/api/bookings', {
@@ -51,17 +63,29 @@ const BookingModal: React.FC = () => {
 
       const result = await response.json();
       console.log('Booking submitted:', result);
+      
+      // Track successful submission and conversion
+      trackBookingModal('submit', { bookingId: result.data?.id });
+      trackConversion('booking', 1, { 
+        email: data.email,
+        company: data.company,
+        challenge: data.challenge,
+        timezone: data.timezone 
+      });
 
       setShowSuccess(true);
       
       // Close modal after showing success message
       setTimeout(() => {
         setShowSuccess(false);
-        closeModal();
+        handleClose();
       }, 3000);
     } catch (err) {
       console.error('Error submitting booking:', err);
       setError('Something went wrong. Please try again.');
+      
+      // Track error
+      trackBookingModal('error', { error: err instanceof Error ? err.message : 'Unknown error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -77,7 +101,7 @@ const BookingModal: React.FC = () => {
           'fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300',
           isModalOpen ? 'opacity-100' : 'opacity-0'
         )}
-        onClick={closeModal}
+        onClick={handleClose}
       />
 
       {/* Modal */}
@@ -103,7 +127,7 @@ const BookingModal: React.FC = () => {
               </p>
             </div>
             <button
-              onClick={closeModal}
+              onClick={handleClose}
               className="p-2 hover:bg-neutral-softGray rounded-lg transition-colors"
               aria-label="Close modal"
             >

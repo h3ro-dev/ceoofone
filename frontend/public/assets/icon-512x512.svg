@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="512" height="512" fill="white"/>
+  
+  <!-- Icon centered and scaled -->
+  <g transform="translate(256, 256)">
+    <!-- Outer circle -->
+    <circle r="200" fill="none" stroke="#4169E1" stroke-width="15"/>
+    
+    <!-- Person silhouette -->
+    <circle cy="-70" r="45" fill="#4169E1"/>
+    <path d="M-80 85 L-80 15 C-80 -15 -65 -30 -35 -30 L35 -30 C65 -30 80 -15 80 15 L80 85" fill="#4169E1"/>
+    
+    <!-- AI circuit elements -->
+    <circle cx="-140" r="15" fill="#4169E1" opacity="0.6"/>
+    <circle cx="140" r="15" fill="#4169E1" opacity="0.6"/>
+    <path d="M-125 0 L-85 0 M85 0 L125 0" stroke="#4169E1" stroke-width="8" opacity="0.4"/>
+    
+    <!-- Focus ring -->
+    <circle r="130" fill="none" stroke="#4169E1" stroke-width="8" opacity="0.3" stroke-dasharray="15 30"/>
+  </g>
+</svg>

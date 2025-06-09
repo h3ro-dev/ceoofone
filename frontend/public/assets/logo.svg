@@ -1,0 +1,28 @@
+<svg width="240" height="60" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon Part -->
+  <g id="icon">
+    <!-- Outer circle representing leadership/wholeness -->
+    <circle cx="30" cy="30" r="28" fill="none" stroke="#4169E1" stroke-width="2"/>
+    
+    <!-- Inner elements representing CEO and AI -->
+    <!-- Person silhouette (simplified) -->
+    <path d="M30 18 C33 18 35 20 35 23 C35 26 33 28 30 28 C27 28 25 26 25 23 C25 20 27 18 30 18 Z" fill="#4169E1"/>
+    <path d="M22 42 L22 36 C22 33 24 31 27 31 L33 31 C36 31 38 33 38 36 L38 42" fill="#4169E1"/>
+    
+    <!-- AI circuit elements (subtle) -->
+    <circle cx="20" cy="30" r="2" fill="#4169E1" opacity="0.6"/>
+    <circle cx="40" cy="30" r="2" fill="#4169E1" opacity="0.6"/>
+    <path d="M22 30 L28 30 M32 30 L38 30" stroke="#4169E1" stroke-width="1" opacity="0.4"/>
+    
+    <!-- Focus ring (inner) -->
+    <circle cx="30" cy="30" r="18" fill="none" stroke="#4169E1" stroke-width="1" opacity="0.3" stroke-dasharray="2 4"/>
+  </g>
+  
+  <!-- Text Part -->
+  <g id="text" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <!-- CEO of One -->
+    <text x="70" y="25" font-size="20" font-weight="700" fill="#1a1a1a">CEO of One</text>
+    <!-- Tagline -->
+    <text x="70" y="42" font-size="12" font-weight="400" fill="#666666">AI-powered leadership assistant</text>
+  </g>
+</svg>

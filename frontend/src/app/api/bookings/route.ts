@@ -1,85 +1,93 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { successResponse, errorResponse } from '@/lib/api/response';
+import { withMiddleware } from '@/lib/api/middleware';
+import { validateRequest, bookingSchema, formatZodErrors } from '@/lib/api/validation';
+import { ValidationError } from '@/lib/api/errors';
+import { env } from '@/lib/env';
 
-interface BookingData {
-  name: string;
-  email: string;
-  company: string;
-  challenge: string;
-  challengeDetails: string;
-  preferredDate: string;
-  preferredTime: string;
-  timezone: string;
-}
+/**
+ * Booking submission endpoint
+ * POST /api/bookings
+ */
+export const POST = withMiddleware(
+  async (req: NextRequest) => {
+    try {
+      // Parse request body
+      const body = await req.json();
 
-export async function POST(req: NextRequest) {
-  try {
-    const body: BookingData = await req.json();
-
-    // Basic validation
-    const requiredFields = ['name', 'email', 'company', 'challenge', 'challengeDetails', 'preferredDate', 'preferredTime'];
-    const missingFields = requiredFields.filter(field => !body[field as keyof BookingData]);
-
-    if (missingFields.length > 0) {
-      return NextResponse.json(
-        { error: `Missing required fields: ${missingFields.join(', ')}` },
-        { status: 400 }
-      );
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(body.email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
-    }
-
-    // For now, just log the booking data
-    // In production, this would integrate with a booking system (Calendly, Cal.com, etc.)
-    console.log('New booking received:', {
-      ...body,
-      submittedAt: new Date().toISOString(),
-      ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown',
-      userAgent: req.headers.get('user-agent') || 'unknown'
-    });
-
-    // TODO: Integration points for production:
-    // 1. Save to database (PostgreSQL, MongoDB, etc.)
-    // 2. Send confirmation email (SendGrid, AWS SES, etc.)
-    // 3. Create calendar event (Google Calendar API, Calendly, etc.)
-    // 4. Send notification to admin (Slack, email, etc.)
-    // 5. Add to CRM (HubSpot, Salesforce, etc.)
-    // 6. Analytics tracking (Google Analytics, Mixpanel, etc.)
-
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Return success response
-    return NextResponse.json({
-      success: true,
-      message: 'Booking submitted successfully',
-      bookingId: `BOOK-${Date.now()}`,
-      data: {
-        name: body.name,
-        email: body.email,
-        company: body.company,
-        scheduledFor: `${body.preferredDate} at ${body.preferredTime} (${body.timezone})`
+      // Validate request data
+      const validation = await validateRequest(body, bookingSchema);
+      
+      if (!validation.success) {
+        throw new ValidationError(
+          'Invalid booking data',
+          formatZodErrors(validation.errors)
+        );
       }
-    });
 
-  } catch (error) {
-    console.error('Booking submission error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+      const bookingData = validation.data;
+
+      // Generate booking ID
+      const bookingId = `BOOK-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+      // Log booking data (in production, save to database)
+      const bookingRecord = {
+        id: bookingId,
+        ...bookingData,
+        submittedAt: new Date().toISOString(),
+        ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown',
+        userAgent: req.headers.get('user-agent') || 'unknown',
+        status: 'pending',
+      };
+
+      console.log('New booking received:', bookingRecord);
+
+      // TODO: Production integrations
+      // 1. Save to database (Supabase)
+      // 2. Send confirmation email
+      // 3. Create calendar event
+      // 4. Send notification to admin
+      // 5. Add to CRM
+      // 6. Track analytics event
+
+      // Simulate processing delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Return success response
+      return successResponse({
+        bookingId,
+        message: 'Booking submitted successfully',
+        booking: {
+          name: bookingData.name,
+          email: bookingData.email,
+          company: bookingData.company,
+          scheduledFor: `${bookingData.preferredDate} at ${bookingData.preferredTime} (${bookingData.timezone})`,
+        },
+        nextSteps: [
+          'You will receive a confirmation email shortly',
+          'Our team will review your submission within 24 hours',
+          'You will receive a calendar invite once confirmed',
+        ],
+      }, 201);
+
+    } catch (error) {
+      // Error is handled by middleware
+      throw error;
+    }
+  },
+  {
+    rateLimit: 'booking', // 10 requests per minute
   }
-}
+);
 
-export async function GET() {
-  return NextResponse.json(
-    { error: 'Method not allowed' },
-    { status: 405 }
-  );
-}
+/**
+ * Method not allowed handler
+ */
+export const GET = withMiddleware(
+  async () => {
+    return errorResponse('Method not allowed', 405);
+  },
+  {
+    rateLimit: false,
+  }
+);

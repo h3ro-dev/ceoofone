@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { cn } from '@/utils/cn';
 import Button from '@/components/ui/Button';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export interface BookingFormData {
   // Step 1
@@ -44,6 +45,7 @@ const timeSlots = [
 ];
 
 const BookingForm: React.FC<BookingFormProps> = ({ onSubmit, onClose }) => {
+  const { trackFormInteraction, trackBookingModal } = useAnalytics();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<BookingFormData>>({});

@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { trackCTAClick } = useAnalytics();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +40,12 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-primary-blue hover:text-primary-orange transition-colors">
-              CEO of One
+            <a href="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+              <img 
+                src="/assets/logo.svg" 
+                alt="CEO of One" 
+                className="h-10 w-auto"
+              />
             </a>
           </div>
           
@@ -77,7 +83,13 @@ const Header: React.FC = () => {
           
           {/* CTA Button */}
           <div className="flex items-center space-x-4">
-            <Button size="sm" variant="primary" className="hidden sm:inline-flex" isBookingTrigger>
+            <Button 
+              size="sm" 
+              variant="primary" 
+              className="hidden sm:inline-flex" 
+              isBookingTrigger
+              onClick={() => trackCTAClick('header', 'Get Started Free')}
+            >
               Get Started Free
             </Button>
             {/* Mobile menu button */}

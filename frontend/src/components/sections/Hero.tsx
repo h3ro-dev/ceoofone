@@ -2,8 +2,10 @@ import React from 'react';
 import Button from '@/components/ui/Button';
 import { Display, BodyLarge } from '@/components/ui/Typography';
 import Section from '@/components/ui/Section';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const Hero: React.FC = () => {
+  const { trackCTAClick } = useAnalytics();
   return (
     <Section paddingY="xl" className="bg-gradient-to-b from-white to-neutral-softGray">
       <div className="text-center max-w-4xl mx-auto">
@@ -25,10 +27,21 @@ const Hero: React.FC = () => {
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          <Button size="lg" variant="primary" className="min-w-[250px]" isBookingTrigger>
+          <Button 
+            size="lg" 
+            variant="primary" 
+            className="min-w-[250px]" 
+            isBookingTrigger
+            onClick={() => trackCTAClick('hero', 'Get Your Free CEO Strategy Session')}
+          >
             Get Your Free CEO Strategy Session
           </Button>
-          <Button size="lg" variant="ghost" className="min-w-[200px]">
+          <Button 
+            size="lg" 
+            variant="ghost" 
+            className="min-w-[200px]"
+            onClick={() => trackCTAClick('hero', 'See How It Works')}
+          >
             See How It Works (2-min demo)
           </Button>
         </div>

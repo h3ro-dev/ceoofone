@@ -8,7 +8,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">CEO of One</h3>
+            <img 
+              src="/assets/logo-white.svg" 
+              alt="CEO of One" 
+              className="h-12 w-auto mb-4"
+            />
             <Body className="text-neutral-lightGray mb-4">
               Turn overwhelm into focus and results. AI-powered leverage for solo leaders.
             </Body>

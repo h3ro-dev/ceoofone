@@ -2,8 +2,10 @@ import React from 'react';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import { H2, H3, Body, BodySmall } from '@/components/ui/Typography';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const CTA: React.FC = () => {
+  const { trackCTAClick } = useAnalytics();
   return (
     <Section paddingY="lg" className="bg-gradient-to-br from-neutral-softGray to-white">
       <div className="max-w-4xl mx-auto">
@@ -29,7 +31,13 @@ const CTA: React.FC = () => {
             ))}
           </div>
           
-          <Button size="lg" variant="primary" className="min-w-[300px] mb-4" isBookingTrigger>
+          <Button 
+            size="lg" 
+            variant="primary" 
+            className="min-w-[300px] mb-4" 
+            isBookingTrigger
+            onClick={() => trackCTAClick('section', 'Book My Free Strategy Session')}
+          >
             Book My Free Strategy Session
           </Button>
           
@@ -46,7 +54,11 @@ const CTA: React.FC = () => {
             <Body className="mb-4 text-neutral-mediumGray">
               Watch how other solo CEOs transformed from overwhelmed to in-control
             </Body>
-            <Button variant="secondary" className="w-full">
+            <Button 
+              variant="secondary" 
+              className="w-full"
+              onClick={() => trackCTAClick('section', 'Watch 2-Minute Demo')}
+            >
               Watch 2-Minute Demo
             </Button>
             <BodySmall className="mt-2 text-neutral-mediumGray">
@@ -60,7 +72,11 @@ const CTA: React.FC = () => {
             <Body className="mb-4 text-neutral-mediumGray">
               Free guide to identifying the critical 20% that drives 80% of your growth
             </Body>
-            <Button variant="ghost" className="w-full">
+            <Button 
+              variant="ghost" 
+              className="w-full"
+              onClick={() => trackCTAClick('section', 'Get Free Toolkit')}
+            >
               Get Free Toolkit
             </Button>
             <BodySmall className="mt-2 text-neutral-mediumGray">
