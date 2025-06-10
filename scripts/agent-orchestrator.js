@@ -49,7 +49,7 @@ const TASK_REGISTRY = {
     priority: 'CRITICAL',
     prompt:
       "Create comprehensive content strategy for CEO of One. Target audience: solo CEOs drowning in 80% that doesn't matter. Key messages: focus on critical 20%, AI-powered chief of staff, clarity in chaos. Write all website copy including hero section, pain points, solution, testimonials, CTAs. Reference Utlyze messaging in memories. Save in content/copy/",
-    completionCheck: () => fs.existsSync('content/copy/homepage.md'),
+    completionCheck: () => fs.existsSync('frontend/content/copy/homepage.md'),
   },
 
   'seo-optimization': {
@@ -74,7 +74,7 @@ const TASK_REGISTRY = {
       "Initialize Next.js 14 project with TypeScript, Tailwind CSS, and App Router. Configure for optimal performance and SEO. Set up ESLint, Prettier, and development environment. Ensure it follows Utlyze's clean, minimalist design principles.",
     completionCheck: () =>
       fs.existsSync('frontend/package.json') &&
-      fs.existsSync('frontend/next.config.js'),
+      fs.existsSync('frontend/next.config.mjs'),
   },
 
   'component-library': {
@@ -121,7 +121,7 @@ const TASK_REGISTRY = {
     priority: 'HIGH',
     prompt:
       'Set up Express.js API with TypeScript. Configure middleware, error handling, CORS, rate limiting, security headers. Create health check endpoint. Set up for Vercel deployment.',
-    completionCheck: () => fs.existsSync('backend/src/api/server.ts'),
+    completionCheck: () => fs.existsSync('frontend/src/app/api/bookings/route.ts') && fs.existsSync('frontend/src/lib/api/middleware/index.ts'),
   },
 
   'lead-capture-api': {

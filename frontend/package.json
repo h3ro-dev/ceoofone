@@ -19,7 +19,14 @@
     "lighthouse:ci": "npx lighthouse https://localhost:3000 --output json --output-path ./lighthouse-report.json",
     "preflight": "npm run type-check && npm run lint && npm run format:check",
     "precommit": "lint-staged",
-    "test:build": "npm run build && npm run start"
+    "test:build": "npm run build && npm run start",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "test:visual": "playwright test visual-review.spec.ts --headed",
+    "test:a11y": "playwright test accessibility.spec.ts",
+    "test:perf": "playwright test performance.spec.ts"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.0.5",
@@ -34,7 +41,9 @@
     "zod": "^3.25.56"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@next/bundle-analyzer": "^15.3.3",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
