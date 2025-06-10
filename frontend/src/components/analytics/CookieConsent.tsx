@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { setAnalyticsConsent } from '@/utils/analytics';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);

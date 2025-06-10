@@ -18,9 +18,10 @@ export function reportWebVitals(metric: {
       if (metric.value > 4000) rating = 'poor';
       else if (metric.value > 2500) rating = 'needs-improvement';
       break;
-    case 'FID': // First Input Delay
-      if (metric.value > 300) rating = 'poor';
-      else if (metric.value > 100) rating = 'needs-improvement';
+    case 'FID': // First Input Delay (deprecated)
+    case 'INP': // Interaction to Next Paint (replaced FID)
+      if (metric.value > 500) rating = 'poor';
+      else if (metric.value > 200) rating = 'needs-improvement';
       break;
     case 'CLS': // Cumulative Layout Shift
       if (metric.value > 0.25) rating = 'poor';
