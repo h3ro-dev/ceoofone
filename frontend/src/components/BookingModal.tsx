@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '@/utils/cn';
 import BookingForm, { BookingFormData } from './BookingForm';
+import { notifyLead, buildBookingPayload } from '@/utils/notifyLead';
 import { useBooking } from '@/contexts/BookingContext';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
@@ -63,6 +64,24 @@ const BookingModal: React.FC = () => {
 
       const result = await response.json();
       console.log('Booking submitted:', result);
+      
+      // Fire-and-forget Slack notifier (centralized proxy)
+      try {
+        const payload = buildBookingPayload({
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          challenge: data.challenge,
+          challengeDetails: data.challengeDetails,
+          preferredDate: data.preferredDate,
+          preferredTime: data.preferredTime,
+          timezone: data.timezone,
+        });
+        // Do not await to avoid blocking UX
+        notifyLead('booking', payload);
+      } catch (e) {
+        console.warn('notifyLead skipped', e);
+      }
       
       // Track successful submission and conversion
       trackBookingModal('submit', { bookingId: result.data?.id });
